@@ -84,6 +84,9 @@ Pour vous inscrire et essayer GEE, ça se passe sur [https://code.earthengine.go
 - **QGIS** pour visualiser et faire des traitements simples,
 - **OTB** pour des traitements plus complexes ou plus facilement reproductions (en mode cli, c'est-à-dire en ligne de commande, ou gui, c'est-à-dire à travers une interface graphique).
 
+#### Pré-requis
+Comme OTB dorénavant un plugin QGIS depuis la version 3, veuillez [suivre la page dédiée à son installation](https://gitlab.orfeo-toolbox.org/orfeotoolbox/qgis-otb-plugin).
+
 ### Image Sentinel-2
 
 ![Aperçu de l'image Sentinel-2](_images/SENTINEL2A_20190516-105902-454_L2A_T31TCJ_C_V2-1_QKL_ALL.jpg)
@@ -92,7 +95,7 @@ Comme les images Sentinel-2 sont relativement lourdes (~2go), je vous ai réduis
 
 L'acquisition est disponible au format zip : [http://karasiak.net/data/students/SENTINEL2A_20190516-105902-454_L2A_T31TCJ_C_V2-1.zip](http://karasiak.net/data/students/SENTINEL2A_20190516-105902-454_L2A_T31TCJ_C_V2-1.zip).
 
-Répondez aux questions suivantes en vous aidant des métadonnées : 
+Répondez aux questions suivantes en vous aidant du fichier des métadonnées contenu dans le dossier de l'image (il s'agit du fichier xml) : 
 
 - Qui a produit cette image ?
 - Quel est le pourcentage de nuages dans l'image ?
@@ -104,16 +107,15 @@ Répondez aux questions suivantes en vous aidant des métadonnées :
 
 Comme vous avez pu le voir, pour chaque acquisition vous avez donc de multiples fichiers.
 
-Afin de visualiser les images une par une, il est recommandé d'utiliser un **raster virtuel**. Vous pourrez ainsi combiner plusieurs images entre elles, et de résolutions différentes !
+Afin de visualiser les images une par une, il est recommandé de construire un **raster virtuel**. Vous pourrez ainsi combiner plusieurs images entre elles, et de résolutions différentes ! Pour ce faire, recherchez dans la boite à outils de traitements de Qgis `Construire un raster virtuel`.
 
-Essayez dans **QGIS** de visualiser l'image Sentinel-2 fournie avec respectivement :
+Puis, toujours dans **QGIS**, visualisez l'image Sentinel-2 fournie avec respectivement :
 
 - une composition RGB,
 - une composition infra-rouge couleur (c'est-dire que l'infra-rouge sera mis dans le canal du rouge)
 - une composition colorée SWIR (c'est-à-dire, le rouge dans le canal bleu, la bande 8A dans le vert, et la bande 12 dans le canal rouge) qui mélange à la fois des bandes à 10m de résolution spatiale et des bandes à 20m.l
 
-
-
+Pour savoir à quelle spectre est rattachée chaque bande Sentinel-2, [consultez la page dédiée de l'ESA](https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/resolutions/spatial).
 
 ### Calcul du NDVI
 
@@ -139,8 +141,6 @@ Afin de bien vous familiariser avec les outils, je vous conseille d'apprendre à
 - des deux images (l'image de la bande rouge et celle de l'infrarouge) ,
 - du raster virtuel généré précédemment.
 
-
-
 #### À partir d'otb BandMath CLI (mode geek)
 
 Dans le terminal de commandes (Ctrl+T sous ubuntu) ou cherchez terminal dans le barre de recherche, puis tapez :
@@ -152,6 +152,8 @@ Il vous faudra remplir les arguments suivants :
 - `-out` avec le nom de l'image que vous voulez enregistrer (i.e. ndvi.tif par exemple), suivant du format comme vu ci-dessus.
 - `-exp` l'expression permettant de calculer le NDVI. im1b1 signifie par exemple la bande 1 dans l'image 1. im1b3 signifie la bande 3 de l'image 1, im2b1 signifie la bande 1 dans l'image 2.
 
+Par exemple la ligne de commande pourra être : `otbcli_BandMath -il monImage.vrt -out ndvi.tif int16 -exp '(im1b2-im1b1) / (im1b2 + im1b1) * 100' ` 
+
 #### À partir d'otb BandMath GUI (mode petit geek)
 
 Une interface OTB est disponible dans QGIS, il vous suffit alors de recherche BandMath dans la boîte à outils de traitements. L'expression sera la même que celle précédemment trouvée.
@@ -159,6 +161,10 @@ Une interface OTB est disponible dans QGIS, il vous suffit alors de recherche Ba
 #### À partir de la calculatrice raster (mode utilisateur SIG)
 
 La dernière méthode consiste à utiliser la calculatrice raster présente dans QGIS afin de calculer le NDVI.
+
+Comme pour construire un raster virtuel, placez vous dans la boîte à outils de traitements et tapez `Raster calculator`.
+
+Vous pourrez alors calculez un indice (soit à partir d'une image de plusieurs bandes soit de plusieurs images d'une bande) en tapant la formule du NDVI. Il est très probable que le NDVI soit déjà dans les expressions enregistrés dans l'outil `Raster calculator`, dans ce cas essayez avec et sans l'expression.
 
 ### Visualisation du NDVI
 
@@ -169,13 +175,11 @@ Visualiser maintenant les 3 NDVI obtenus et répondez à ces questions :
 - Trouvez-vous des différences de taille de fichier ?
 - Selon vous, quel avantage y-a-t-il à utiliser l'interface en ligne de commande ?
 
-
-
 ------
 
 
 
-## Cours 3 [En finalisation] 
+## Cours 3
 
 Maintenant que vous êtes familiarisé la notion d'indice spectral et comment en calculer, allons plus loin !
 
