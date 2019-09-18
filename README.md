@@ -60,10 +60,11 @@ Il ne sera pas étudié pendant ce cours l'outil de Google nommé Google Earth E
 
 À partir d'une console javascript, vous pouvez directement intérargir avec les images satellites stockées chez Google, plus besoin de télécharger les images, et de puissants processeurs pour calculer des indices, des algorithmes... Cependant, si aujourd'hui GEE est gratuit, il est fort à parier que son coût de fonctionnement devrait être assez élevé.
 
+Un exmeple parlant de synthèse annuel de Bélize avec en prime le code disponible : [https://code.earthengine.google.com/a0a9d861025b03e28a82677c3dc305d5](https://code.earthengine.google.com/a0a9d861025b03e28a82677c3dc305d5)
+
 Afin de connaitre le potentiel de GEE sans y passer trop de temps, je vous propose de regarder [la liste gérée par Philippe Gärtner qui recense les nombreux scripts GEE](https://philippgaertner.github.io/2019/04/earth-engine-apps-inventory/).
 
 Pour vous inscrire et essayer GEE, ça se passe sur [https://code.earthengine.google.com](https://code.earthengine.google.com).
-
 
 
 ------
