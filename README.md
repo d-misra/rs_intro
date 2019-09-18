@@ -87,9 +87,9 @@ Pour vous inscrire et essayer GEE, ça se passe sur [https://code.earthengine.go
 
 ![Aperçu de l'image Sentinel-2](_images/SENTINEL2A_20190516-105902-454_L2A_T31TCJ_C_V2-1_QKL_ALL.jpg)
 
-Comme les images Sentinel-2 sont relativement lourdes (~2go), je vous ai réduis l'emprise de l'acquisiton et  j'ai supprimé quelques images (luminance et les fichiers de reflectance surface).
+Comme les images Sentinel-2 sont relativement lourdes (~2go), je vous ai réduis l'emprise de l'acquisiton, compressé l'image, et j'ai supprimé quelques fichiers (la luminance ou les fichiers de reflectance de surface).
 
-L'image est disponible au format zip : [data/SENTINEL2A_20190516-105902-454_L2A_T31TCJ_D_V2-1_LIGHT.zip](data/SENTINEL2A_20190516-105902-454_L2A_T31TCJ_D_V2-1_LIGHT.zip).
+L'acquisition est disponible au format zip : [http://karasiak.net/data/students/SENTINEL2A_20190516-105902-454_L2A_T31TCJ_C_V2-1.zip](http://karasiak.net/data/students/SENTINEL2A_20190516-105902-454_L2A_T31TCJ_C_V2-1.zip).
 
 Répondez aux questions suivantes en vous aidant des métadonnées : 
 
