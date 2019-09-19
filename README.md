@@ -66,7 +66,6 @@ Afin de connaitre le potentiel de GEE sans y passer trop de temps, je vous propo
 
 Pour vous inscrire et essayer GEE, ça se passe sur [https://code.earthengine.google.com](https://code.earthengine.google.com).
 
-
 ------
 
 
@@ -85,7 +84,7 @@ Pour vous inscrire et essayer GEE, ça se passe sur [https://code.earthengine.go
 - **OTB** pour des traitements plus complexes ou plus facilement reproductions (en mode cli, c'est-à-dire en ligne de commande, ou gui, c'est-à-dire à travers une interface graphique).
 
 #### Pré-requis
-Comme OTB dorénavant un plugin QGIS depuis la version 3, veuillez [suivre la page dédiée à son installation](https://gitlab.orfeo-toolbox.org/orfeotoolbox/qgis-otb-plugin).
+Comme OTB dorénavant un plugin QGIS depuis la version 3, veuillez [suivre la page dédiée à son installation](https://gitlab.orfeo-toolbox.org/orfeotoolbox/qgis-otb-plugin). Si vous utilisez votre propre ordinateur, vous devrez tout d'abord installer OrfeoToolBox avant son plugin.
 
 ### Image Sentinel-2
 
@@ -113,13 +112,13 @@ Puis, toujours dans **QGIS**, visualisez l'image Sentinel-2 fournie avec respect
 
 - une composition RGB,
 - une composition infra-rouge couleur (c'est-dire que l'infra-rouge sera mis dans le canal du rouge)
-- une composition colorée SWIR (c'est-à-dire, le rouge dans le canal bleu, la bande 8A dans le vert, et la bande 12 dans le canal rouge) qui mélange à la fois des bandes à 10m de résolution spatiale et des bandes à 20m.l
+- une composition colorée SWIR (c'est-à-dire, le rouge dans le canal bleu, la bande 8A dans le vert, et la bande 12 dans le canal rouge) qui mélange à la fois des bandes à 10m de résolution spatiale et des bandes à 20m.
 
-Pour savoir à quelle spectre est rattachée chaque bande Sentinel-2, [consultez la page dédiée de l'ESA](https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/resolutions/spatial).
+Pour savoir à quelle partie du spectre est rattachée chaque bande Sentinel-2, [consultez la page dédiée de l'ESA](https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/resolutions/spatial).
 
 ### Calcul du NDVI
 
-Le NDVI (Normalized Difference Vegetation Ratio) est un indice spectral qui se calcule à partir de la bande rouge et infrarouge. Sa formule est la suivante :
+Le NDVI (Normalized Difference Vegetation Ratio) est un indice spectral qui se calcule à partir de la bande rouge et infrarouge. Il caracterise l'activité de la végétation. Sa formule est la suivante :
 ```
 NDVI = ((NIR - R)/(NIR + R))
 ```
@@ -199,7 +198,7 @@ Retrouver pour chaque indice spectral la bande Sentinel-2 correspondante puis g�
 | **Neige** |
 | NDSI | Snow Index | `(Vert - MIR) / (Vert + MIR)` |
 
-*Pour cette indice, la bande Sentinel-2 vous est directement communiquée.
+*Pour cet indice, la bande Sentinel-2 vous est directement communiquée.
 
 ### Segmenter votre image
 
@@ -207,7 +206,7 @@ Retrouver pour chaque indice spectral la bande Sentinel-2 correspondante puis g�
 
 Par exemple, à partir du NDVI, créez une nouvelle image avec plusieurs classes (1 = Forêt, 2 = non-forêt, 3 = Eau) par exemple.
 
-Vous pouvez utiliser comme précédemment, soit BandMath, soit la calculatrice raster.
+Vous pouvez utiliser comme précédemment, soit `BandMath`, soit la `calculatrice raster`.
 
 Nommez votre fichier `OCS.tif` et choisissez bien votre format (entier/flottant...).
 
@@ -217,12 +216,12 @@ Nommez votre fichier `OCS.tif` et choisissez bien votre format (entier/flottant.
 
 
 
-## Cours 4 [En cours d'écriture] 
+## Cours 4 
 
 L'apprentissage automatique, que vous connaissez peut-être plus sous le nom *machine learning*,  consiste à apprendre à travers les statistiques un modèle qui pourra par la suite 
 prédire des données qu'il n'aura pas utilisé pour l'apprentissage.
 
-Dans notre cas, ce qui nous intéresse est d'utiliser les pixels comme données d'apprentissage pour pouvoir cartographier l'occupation du sol. Cependant, en plus des pixels, nous devons communiquer ce qu'on appelle un label, c'est-à-dire un identifiant unique pour chaque classe (forêt, eau, route...).
+Dans notre cas, ce qui nous intéresse est l'utilisation des pixels comme données d'apprentissage pour pouvoir cartographier l'occupation du sol. Cependant, en plus des pixels, nous devons communiquer ce qu'on appelle un label, c'est-à-dire un identifiant unique pour chaque classe (forêt = 1, eau = 2, route = 3, etc...).
 
 ### Créer des polygones d'entrainement
 
@@ -238,9 +237,9 @@ Par exemple, pour chaque polygone (une ligne = un polygone) :
 
 ### Entrainer un modèle
 
-Différents algorithmes, KNN, GMM très rapides mais pas forcément les plus performants.
+Différents algorithmes existent, celui fourni par défaut par dzetsaka (voir après) et GMM, un modèle de mélanges gaussiens, codé en python par Mathieu Fauvel (ancien enseignant-chercheur à l'ENSAT et aujourd'hui chercheur au CESBIO).
 
-Random Forest très réputé et très performant dans l'ensemble.
+Comme vu lors de la partie théorique (cours 1), Random Forest est très réputé et très performant, il convient à la plupart des problèmes.
 
 Deux méthodes pour apprendre un modèle depuis QGIS : 
 
@@ -257,12 +256,37 @@ Pour évaluer le modèle, il convient de garder de côté quelques polygones pou
 
 - Calculer la matrice de confusion et l'accord global (nombre de pixels bien prédits / nombre total de pixels bien et mal prédits)
 
+#### Apprentissage avec Dzetsaka
+
+Installer le plugin dzetsaka (disponible dans le dépôt des extensiosn de QGIS). Vous avez alors deux choix : 
+
+- Apprendre un modèle à partir de la boîte à outils de traitements (`Train algorithm`). Une fois l'appentissage effectué, il faudra utiliser `Predict model (classification map)` pour prédire votre modèle.
+- Apprendre et prédire un modèle à partir de l'interface graphique (`Extension > Dzetsaka > Classification dock`). Le modèle appris via l'interface graphique sera directement prédit sur le raster d'entrainement.
+
+#### Apprentissage avec OTB
+
+Pour OrfeoToolBox, vous avez comme au cours précédant, le choix d'utiliser soit l'interface graphique dans QGIS, soit pour les plus geeks d'entre vous le terminal en ligne de commande.
+
+Pour entrainer un modèle à partir d'une image, il faudra utiliser la fonction  `TrainImagesClassifier` d'OTB.
+
+Une fois le modèle appris, il faudra le fournir à la fonction `ImageClassifier` pour prédire une image.
+
 
 
 ------
 
 
 
-## Cours 5 [En cours d'écriture] 
+## Cours 5
 
-En cours d'écriture...
+Calcul du DHI.
+
+
+
+----
+
+
+
+## Cours 6
+
+Partiel
