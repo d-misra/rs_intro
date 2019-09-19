@@ -7,7 +7,7 @@
 
 | Ordre | Date            | Horaire     | Thème                                                                                   |
 |-------|-----------------|-------------|-----------------------------------------------------------------------------------------|
-| 1     | Mer. 18/09/2019 | 13h30/17h30 | Théorie Découverte à partir de sentinel-hub                                             |
+| 1     | Mer. 18/09/2019 | 13h30/17h30 | Théorie et découverte à partir de sentinel-hub                                          |
 | 2     | Ven. 20/09/2019 | 13h30/16h30 | Traitements simples dans Qgis et OTB à partir d’une image Sentinel-2 de taille réduite. |
 | 3     | Lun. 23/09/2019 | 13h30/17h30 | Connaitre, choisir puis générer un indice spectral                                      |
 | 4     | Ven. 27/09/2019 | 8h/12h      | Apprentissage automatique avec OTB et Dzetsaka                                          |
@@ -65,6 +65,7 @@ Un exmeple parlant de synthèse annuel de Bélize avec en prime le code disponib
 Afin de connaitre le potentiel de GEE sans y passer trop de temps, je vous propose de regarder [la liste gérée par Philippe Gärtner qui recense les nombreux scripts GEE](https://philippgaertner.github.io/2019/04/earth-engine-apps-inventory/).
 
 Pour vous inscrire et essayer GEE, ça se passe sur [https://code.earthengine.google.com](https://code.earthengine.google.com).
+
 
 ------
 
