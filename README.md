@@ -190,7 +190,7 @@ Retrouver pour chaque indice spectral la bande Sentinel-2 correspondante puis g�
 | Nom | Nom détaillé | Formule |
 |-----|--------------|---------|
 | **Vegetation** |
-| NDVI | Normalised Difference Vegetation Index | `(Rouge - NIR) / (Rouge + NIR)` |
+| NDVI | Normalised Difference Vegetation Index | `(NIR - Rouge) / (NIR - Rouge)` |
 | EVI | Enhanced Vegetation Indices | `( 2.5 * ( NIR - Rouge ) ) / ( (NIR + 6 * Rouge - 7.5 * Bleu ) + 1 )`|
 | LChloC | Leaf Chlorophyll Content | `B7 / B5`* |
 | NDBR | Normalized Difference NIR/SWIR Normalized Burn Ratio | `(NIR - SWIR) / (NIR + SWIR)` |
