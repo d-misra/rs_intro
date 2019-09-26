@@ -66,7 +66,6 @@ Afin de connaitre le potentiel de GEE sans y passer trop de temps, je vous propo
 
 Pour vous inscrire et essayer GEE, ça se passe sur [https://code.earthengine.google.com](https://code.earthengine.google.com).
 
-
 ------
 
 
@@ -217,16 +216,15 @@ Nommez votre fichier `OCS.tif` et choisissez bien votre format (entier/flottant.
 
 
 
-## Cours 4 
+## Cours 4
 
-L'apprentissage automatique, que vous connaissez peut-être plus sous le nom *machine learning*,  consiste à apprendre à travers les statistiques un modèle qui pourra par la suite 
-prédire des données qu'il n'aura pas utilisé pour l'apprentissage.
+L'apprentissage automatique, que vous connaissez peut-être plus sous le nom *machine learning*,  consiste à apprendre à travers les statistiques un modèle qui pourra par la suite prédire des données qu'il n'aura pas utilisé pour l'apprentissage.
 
 Dans notre cas, ce qui nous intéresse est l'utilisation des pixels comme données d'apprentissage pour pouvoir cartographier l'occupation du sol. Cependant, en plus des pixels, nous devons communiquer ce qu'on appelle un label, c'est-à-dire un identifiant unique pour chaque classe (forêt = 1, eau = 2, route = 3, etc...).
 
 ### Créer des polygones d'entrainement
 
-Pour chaque classe que vous aurez définies (eau, route, forêt...), créer au moins 6 polygones et ajouter un champ qui contiendra un identifiant unique par classe.
+Pour chaque classe que vous aurez définies (eau, route, forêt, champ, sol nu...), créer au moins 3 polygones pour l'entrainement, et 3 polygones pour la validation (dans deux fichiers distincts), et ajouter un champ qui contiendra un identifiant unique par classe.
 
 Par exemple, pour chaque polygone (une ligne = un polygone) : 
 
@@ -235,6 +233,29 @@ Par exemple, pour chaque polygone (une ligne = un polygone) :
 | 1  | Forêt | 1 |
 | 2  | Forêt | 1 |
 | 3  | Eau | 2 |
+
+Pour rappel, pour créer un fichier vectoriel dans QGIS,  `Couche > Créer une couche > Nouvelle couche Geopackage`.
+
+- Choisissez bien `polygone` comme type de géométrie
+
+- Ajouter un champ de type `nombre entier` qui contiendra les numéros de vos classes
+
+  
+
+#### Apprentissage avec Dzetsaka
+
+Installer le plugin dzetsaka (disponible dans le dépôt des extensiosn de QGIS). Vous avez alors deux choix : 
+
+- Apprendre un modèle à partir de la boîte à outils de traitements (`Train algorithm`). Une fois l'appentissage effectué, il faudra utiliser `Predict model (classification map)` pour prédire votre modèle.
+- Apprendre et prédire un modèle à partir de l'interface graphique (`Extension > Dzetsaka > Classification dock`). Le modèle appris via l'interface graphique sera directement prédit sur le raster d'entrainement.
+
+#### Apprentissage avec OTB
+
+Pour OrfeoToolBox, vous avez comme au cours précédant, le choix d'utiliser soit l'interface graphique dans QGIS, soit pour les plus geeks d'entre vous le terminal en ligne de commande.
+
+Pour entrainer un modèle à partir d'une image, il faudra utiliser la fonction  `TrainImagesClassifier` d'OTB.
+
+Une fois le modèle appris, il faudra le fournir à la fonction `ImageClassifier` pour prédire une image.
 
 ### Entrainer un modèle
 
@@ -253,34 +274,50 @@ Puis prédire une image :
 
 ### Évaluer le modèle
 
-Pour évaluer le modèle, il convient de garder de côté quelques polygones pour chaque classe. Ainsi, on pourra vérifier si nos polygones sont bien prédits par le modèle appris précédemment.
+Pour évaluer le modèle, il convient de garder de côté quelques polygones pour chaque classe. Ainsi, avec votre fichier de validation qui contient 3 polygones par classes on pourra vérifier si nos polygones sont bien prédits par le modèle appris précédemment.
 
-- Calculer la matrice de confusion et l'accord global (nombre de pixels bien prédits / nombre total de pixels bien et mal prédits)
+- Calculer la matrice de confusion à partir de `computeConfusionMatrix` d'OTB, puis calculer l'accord global (nombre de pixels bien prédits / nombre total de pixels bien et mal prédits)
+- D'autres indices peuvent être calculés à partir de la matrice de confusion comme le kappa ou le F1.
 
-#### Apprentissage avec Dzetsaka
+Exemple d'une matrice de confusion. Dans le cas ci-dessous, chaque ligne correspond à la réalité terrain (ligne 1, nombre de pixels donné de la classe 1), et chaque colonne correspond au nombre de pixels prédits de chaque classe (colonne 1, nombre de pixels prédits de la classe 1).
 
-Installer le plugin dzetsaka (disponible dans le dépôt des extensiosn de QGIS). Vous avez alors deux choix : 
+| 8    | 0    | 0    |
+| ---- | ---- | ---- |
+| 0    | 1    | 0    |
+| 0    | 1    | 0    |
 
-- Apprendre un modèle à partir de la boîte à outils de traitements (`Train algorithm`). Une fois l'appentissage effectué, il faudra utiliser `Predict model (classification map)` pour prédire votre modèle.
-- Apprendre et prédire un modèle à partir de l'interface graphique (`Extension > Dzetsaka > Classification dock`). Le modèle appris via l'interface graphique sera directement prédit sur le raster d'entrainement.
+- Quel est l'accord global ? Donnez la formule
+- Quelle est la [valeur de l'indice kappa](https://fr.wikipedia.org/wiki/Kappa_de_Cohen) ?
+- Quelle est la [valeur du score F1 par classe et moyen](https://en.wikipedia.org/wiki/F1_score) ?
+- Quelle classe est la moins bien prédite ? Et la mieux prédite ?
 
-#### Apprentissage avec OTB
+Pour calculer ces valeurs, vous pouvez vous aider de l'[outil en ligne de Marco Vanetti](http://www.marcovanetti.com/pages/cfmatrix/).
 
-Pour OrfeoToolBox, vous avez comme au cours précédant, le choix d'utiliser soit l'interface graphique dans QGIS, soit pour les plus geeks d'entre vous le terminal en ligne de commande.
+### Chaine de traitement
 
-Pour entrainer un modèle à partir d'une image, il faudra utiliser la fonction  `TrainImagesClassifier` d'OTB.
+Il peut être intéressant d'utiliser les indices spectraux pour faire de l'apprentissage automatique.
 
-Une fois le modèle appris, il faudra le fournir à la fonction `ImageClassifier` pour prédire une image.
-
-
-
-------
+Votre objectif est de créer une châine de traitement qui prend en entrée : 
 
 
 
-## Cours 5
+- une image Sentinel-2 (et toutes ses bandes)
 
-Calcul du DHI.
+- des parcelles d'entrainement
+- des parcelles de validation
+
+
+
+La chaine devra ensuite :
+
+
+
+- génèrer les 6 indices vus dans le cours
+- apprendre un modèle pour chaque indice et pour l'image Sentinel-2
+- prédire un modèle pour chaque indice et pour l'image Sentinel-2
+- évaluer la qualité chaque modèle
+
+Vous pouvez également comparer différents algorithmes de prédiction.
 
 
 
