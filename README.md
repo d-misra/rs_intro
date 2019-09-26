@@ -86,6 +86,14 @@ Pour vous inscrire et essayer GEE, ça se passe sur [https://code.earthengine.go
 #### Pré-requis
 Comme OTB dorénavant un plugin QGIS depuis la version 3, veuillez [suivre la page dédiée à son installation](https://gitlab.orfeo-toolbox.org/orfeotoolbox/qgis-otb-plugin). Si vous utilisez votre propre ordinateur, vous devrez tout d'abord installer OrfeoToolBox avant son plugin.
 
+Après avoir installé le plugin OTB, cliquez sur la clé Options dans la boite à outils de traitements, puis dans `Fournisseurs de traitements> OTB` mettez ces informations si vous êtes sous Windows : 
+ - OTB application folder :  `C:\OTB-6.6.1-Win64\lib\otb\applications`
+ - OTB folder : `C:\OTB-6.6.1-Win64`
+ 
+Si vous êtes sous Linux : 
+ - OTB application folder :  `\usr\local\OTB-6.6.1-Win64\lib\otb\applications`
+ - OTB folder : `\usr\local\OTB-6.6.1-Win64`
+
 ### Image Sentinel-2
 
 ![Aperçu de l'image Sentinel-2](_images/SENTINEL2A_20190516-105902-454_L2A_T31TCJ_C_V2-1_QKL_ALL.jpg)
@@ -189,7 +197,7 @@ Retrouver pour chaque indice spectral la bande Sentinel-2 correspondante puis g�
 | Nom | Nom détaillé | Formule |
 |-----|--------------|---------|
 | **Vegetation** |
-| NDVI | Normalised Difference Vegetation Index | `(Rouge - NIR) / (Rouge + NIR)` |
+| NDVI | Normalised Difference Vegetation Index | `(NIR - Rouge) / (NIR + Rouge)` |
 | EVI | Enhanced Vegetation Indices | `( 2.5 * ( NIR - Rouge ) ) / ( (NIR + 6 * Rouge - 7.5 * Bleu ) + 1 )`|
 | LChloC | Leaf Chlorophyll Content | `B7 / B5`* |
 | NDBR | Normalized Difference NIR/SWIR Normalized Burn Ratio | `(NIR - SWIR) / (NIR + SWIR)` |
@@ -210,10 +218,22 @@ Vous pouvez utiliser comme précédemment, soit `BandMath`, soit la `calculatric
 
 Nommez votre fichier `OCS.tif` et choisissez bien votre format (entier/flottant...).
 
+### Créer un modèle QGIS pour générer les indices
 
+La boîte à outils de traitements vous permet de créer des modèles pour reproduire des traitements. Il est ainsi possible, en fournissant l'image du spectre rouge et celle du spectre infra-rouge de calculer immédiatement l'indice NDVI puis de segmenter votre image avec un seuil défini par vous ou par l'utilisateur du modèle.
+
+Pour créer votre modèle, en haut à gauche de la boite à outils de traitements, cliquez sur le symboles paramètres (les trois roues dentées) et faites `Créer un nouveau modèle`.
+
+L'objectif de votre modèle est de **générer d'un coup les 6 indices listés précédement**. À vous de choisir quel fonction vous allez utilisé (Raster calculator ou BandMath) et ce que vous demandez en entrée (un vrt de toutes les bandes, ou chaque bande séparemment).
+
+Vous devez donc définir ce que vous avez besoin en entrée (une image ? un numéro de bande ? un nombre pour le seuil du ndvi ?), et ensuite un algorithme qui viendra utiliser ce que l'utilisateur a saisi en entrée.
+
+Pour résumer : 
+- Créer un modèle dans la boîte à outils de traitements QGIS,
+- Générer, à l'aide de votre modèle, les 6 indices spectraux au format geotiff avec un type int16,
+- Sur l'un des indices généré (toujours dans votre modèle), définissez un seuil que l'utilisateur pourra modifier afin de séparer la végétation de la non-végétation et enregistrez ce résultat sous le nom 'vegetation_map'.
 
 ------
-
 
 
 ## Cours 4
