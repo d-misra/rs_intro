@@ -86,6 +86,8 @@ Pour vous inscrire et essayer GEE, ça se passe sur [https://code.earthengine.go
 #### Pré-requis
 Comme OTB dorénavant un plugin QGIS depuis la version 3, veuillez [suivre la page dédiée à son installation](https://gitlab.orfeo-toolbox.org/orfeotoolbox/qgis-otb-plugin). Si vous utilisez votre propre ordinateur, vous devrez tout d'abord installer OrfeoToolBox avant son plugin.
 
+Pour ajouter le dépôt OTB dans QGIS, ajouter cette adresse dans `Extensions / Installer / Paramètres` puis cliquer sur ajouter et coller l'adresse suivante : `http://orfeo-toolbox.org/qgis/plugins.xml`.
+
 Après avoir installé le plugin OTB, cliquez sur la clé Options dans la boite à outils de traitements, puis dans `Fournisseurs de traitements> OTB` mettez ces informations si vous êtes sous Windows : 
  - OTB application folder :  `C:\OTB-6.6.1-Win64\lib\otb\applications`
  - OTB folder : `C:\OTB-6.6.1-Win64`
