@@ -89,8 +89,8 @@ Comme OTB dorénavant un plugin QGIS depuis la version 3, veuillez [suivre la pa
 Pour ajouter le dépôt OTB dans QGIS, ajouter cette adresse dans `Extensions / Installer / Paramètres` puis cliquer sur ajouter et coller l'adresse suivante : `http://orfeo-toolbox.org/qgis/plugins.xml`.
 
 Après avoir installé le plugin OTB, cliquez sur la clé Options dans la boite à outils de traitements, puis dans `Fournisseurs de traitements> OTB` mettez ces informations si vous êtes sous Windows : 
- - OTB application folder :  `C:\OTB-6.6.1-Win64\lib\otb\applications`
- - OTB folder : `C:\OTB-6.6.1-Win64`
+ - OTB application folder :  `C:/OTB-6.6.1-Win64/lib/otb/applications`
+ - OTB folder : `C:/OTB-6.6.1-Win64`
  
 Si vous êtes sous Linux : 
  - OTB application folder :  `\usr\local\OTB-6.6.1-Win64\lib\otb\applications`
