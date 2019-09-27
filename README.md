@@ -342,6 +342,17 @@ La chaine devra ensuite :
 Vous pouvez également comparer différents algorithmes de prédiction.
 
 
+### Les algortihmes
+
+Quelques exemples interactifs des algorithmes utilisés : 
+
+[SVM (Support Vecteur Machine)](https://cs.stanford.edu/~karpathy/svmjs/demo/)
+
+[Random Forest](https://cs.stanford.edu/~karpathy/svmjs/demo/demoforest.html)
+
+[K-Nearest Neighbors](http://vision.stanford.edu/teaching/cs231n-demos/knn/)
+
+[Gaussian Mixture Models](http://www.tmpl.fi/gp/)
 
 ----
 
