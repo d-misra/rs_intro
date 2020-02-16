@@ -1,18 +1,20 @@
 # Introduction à la télédétection
 ![Photographie de Paris par Nadar](_images/nadar_paris.jpg)
 
+**Table des matières** 
+
 [TOC]
 
 ## Planning prévisionnel
 
-| Ordre | Date            | Horaire     | Thème                                                                                   |
-|-------|-----------------|-------------|-----------------------------------------------------------------------------------------|
-| 1     | Mer. 18/09/2019 | 13h30/17h30 | Théorie et découverte à partir de sentinel-hub                                          |
-| 2     | Ven. 20/09/2019 | 13h30/16h30 | Traitements simples dans Qgis et OTB à partir d’une image Sentinel-2 de taille réduite. |
-| 3     | Lun. 23/09/2019 | 13h30/17h30 | Connaitre, choisir puis générer un indice spectral                                      |
-| 4     | Ven. 27/09/2019 | 8h/12h      | Apprentissage automatique avec OTB et Dzetsaka                                          |
-| 5     | Ven. 27/09/2019 | 13h30/16h30 | DHI (Dynamic Habitat Index)                                                             |
-| 6     | Ven. 04/10/2019 | 13h30/16h30 | PARTIEL                                                                                 |
+| Ordre | Thème                                                        |
+| ----- | ------------------------------------------------------------ |
+| 1     | Théorie et découverte à partir de sentinel-hub               |
+| 2     | Traitements simples dans Qgis et OTB à partir d’une image Sentinel-2 de taille réduite. |
+| 3     | Connaitre, choisir puis générer un indice spectral           |
+| 4     | Apprentissage automatique avec OTB et Dzetsaka               |
+| 5     | DHI (Dynamic Habitat Index)                                  |
+| 6     | PARTIEL                                                      |
 
 
 
@@ -89,7 +91,7 @@ Comme OTB dorénavant un plugin QGIS depuis la version 3, veuillez [suivre la pa
 Après avoir installé le plugin OTB, cliquez sur la clé Options dans la boite à outils de traitements, puis dans `Fournisseurs de traitements> OTB` mettez ces informations si vous êtes sous Windows : 
  - OTB application folder :  `C:\OTB-6.6.1-Win64\lib\otb\applications`
  - OTB folder : `C:\OTB-6.6.1-Win64`
- 
+
 Si vous êtes sous Linux : 
  - OTB application folder :  `\usr\local\OTB-6.6.1-Win64\lib\otb\applications`
  - OTB folder : `\usr\local\OTB-6.6.1-Win64`
@@ -150,7 +152,7 @@ Afin de bien vous familiariser avec les outils, je vous conseille d'apprendre à
 
 #### À partir d'otb BandMath CLI (mode geek)
 
-Dans le terminal de commandes (Ctrl+T sous ubuntu) ou cherchez terminal dans le barre de recherche, puis tapez :
+Dans le terminal de commandes (Ctrl+Alt+T sous ubuntu) ou cherchez terminal dans le barre de recherche, puis tapez :
 `otbcli_BandMath -help`
 
 Il vous faudra remplir les arguments suivants : 
@@ -236,7 +238,8 @@ Pour résumer :
 ------
 
 
-## Cours 4
+
+## Cours 4 et 5
 
 L'apprentissage automatique, que vous connaissez peut-être plus sous le nom *machine learning*,  consiste à apprendre à travers les statistiques un modèle qui pourra par la suite prédire des données qu'il n'aura pas utilisé pour l'apprentissage.
 
@@ -301,12 +304,14 @@ Pour évaluer le modèle, il convient de garder de côté quelques polygones pou
 
 Exemple d'une matrice de confusion. Dans le cas ci-dessous, chaque ligne correspond à la réalité terrain (ligne 1, nombre de pixels donné de la classe 1), et chaque colonne correspond au nombre de pixels prédits de chaque classe (colonne 1, nombre de pixels prédits de la classe 1).
 
-| 8    | 0    | 0    |
+| 7    | 0    | 0    |
 | ---- | ---- | ---- |
-| 0    | 1    | 0    |
+| 0    | 1    | 1    |
 | 0    | 1    | 0    |
 
-- Quel est l'accord global ? Donnez la formule
+
+
+- Quel est l'accord global ? Donnez la formule permettant de calculer le résultat
 - Quelle est la [valeur de l'indice kappa](https://fr.wikipedia.org/wiki/Kappa_de_Cohen) ?
 - Quelle est la [valeur du score F1 par classe et moyen](https://en.wikipedia.org/wiki/F1_score) ?
 - Quelle classe est la moins bien prédite ? Et la mieux prédite ?
