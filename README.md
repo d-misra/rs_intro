@@ -56,6 +56,10 @@ Sentinel-hub permet de consulter facilement des données Sentinel-1 et 2 mais au
 
 ![Aperçu d'une série temporelle au sud de Madagascar](_images/Sentinel-2_L1C-timelapse.gif)
 
+Un compte générique vous est gracieusement offert par la maison : 
+- mail : gimloderde@yevme.com
+- mdp : rsensat!
+
 ### Google Earth Engine
 
 Il ne sera pas étudié pendant ce cours l'outil de Google nommé Google Earth Engine (GEE), cependant, il est important de le connaitre un minimum.
