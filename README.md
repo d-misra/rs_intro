@@ -188,6 +188,17 @@ Visualiser maintenant les 3 NDVI obtenus et répondez à ces questions :
 - Trouvez-vous des différences de taille de fichier ?
 - Selon vous, quel avantage y-a-t-il à utiliser l'interface en ligne de commande ?
 
+### Ajouter un fond de carte
+
+Ne paniquez pas, vous allez pour la première fois de ce cours, et la dernière, utiliser la console python de Qgis, mais c'est pour la bonne cause ! 
+
+ - Exécuter un script python dans la console QGIS (Ctrl+Alt+P) et copier/coller les lignes du fichier suivant : https://git.io/fjMJq. 
+
+Dans le panneau explorateur sur la gauche de QGIS, vous aurez désormais accès à des dizaines de fournisseurs de tuiles dans la partie XYZ Tiles. Double-cliquez sur Google Satellite pour avoir uniquement une photo aérienne en fond.
+
+``A noter : les données accessibles depuis le plug-in QuickMapServices sont définies dans un système de projection dit pseudo-Mercator (EPSG:3857). Il ne s'agit plus de votre système de référence.``
+
+
 ------
 
 
