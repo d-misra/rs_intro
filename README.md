@@ -142,7 +142,7 @@ Pour économiser de l'espace disque, il est d'usage de **multiplier par 100 le N
 
 | Nom    | Type   | Valeur min | Valeur max |
 |--------|--------|------------|------------|
-| Byte   | Entier | 0          | 255        |
+| Byte (uint8)  | Entier | 0          | 255        |
 | Int16  | Entier | -32768     | 32767      |
 | Uint16 | Entier | 0          | 65535      |
 | Int32 | Entier | -2147483648 | 2147483647 |
