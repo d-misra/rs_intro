@@ -371,7 +371,7 @@ Ce cours s'organise comme un TD plus automne que les parties précédentes.
 
 ### Série temporelle
 
-Votre mission, si vous l'acceptez, est de calculer le Dynamic Habitat Index (DHI) à partir d'une série temporelle Sentinel-2 sur la forêt de Bouconne.
+Votre mission, si vous l'acceptez, est de calculer le Dynamic Habitat Index (DHI) à partir d'une série temporelle Sentinel-2 sur la forêt de Bouconne ([image](http://karasiak.net/data/students/SITS_2018_bouconne.tif) et [metadonnées](http://karasiak.net/data/students/SITS_2018_bouconne.tif.aux.xml) à télécharger)
 
 Mais qu'est-ce que le DHI ? Il s'agit d'un indice temporel qui se base sur le NDVI pour estimer la dynamique des habitats. Vous pouvez [jeter un oeil à cette présentation à la fois succinte, informative, et agréable](https://arset.gsfc.nasa.gov/sites/default/files/land/workshops/WCC2016/S3.2%20Dynamic%20Habitat%20Index%20for%20Biodiversity.pdf). Cet indice devrait être aussi l'un des premiers à être [produit à l'échelle nationale par le pôle Théia](https://www.theia-land.fr/ceslist/variables-pour-la-biodiversite/).
 
@@ -380,6 +380,8 @@ Après avoir trouvé la formule du DHI, vous vous lancerez alors dans la quête 
 ### Être actif c'est bien !
 
 Depuis le début du cours, nous n'avons utilisé que des capteurs optiques passifs. Pour changer la donne, nous allons prendre en main des données RADAR provenant de Sentinel-1. Gràce à Yousra Hamrouni @YousraH nous avons désormais des données radar lissées (filtre spatio-temporel) avec une moyenne par saison.
+
+La donnée est à télécharger ici : http://karasiak.net/data/students/bouconne_s1.zip.
 
 Après vous être familiarisé avec la donnée radar, répondez à ces questions : 
 
