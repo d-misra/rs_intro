@@ -365,6 +365,29 @@ Vous pouvez également comparer différents algorithmes de prédiction.
 
 
 
+## Cours 5 : Série temporelle et image radar.
+
+Ce cours s'organise comme un TD plus automne que les parties précédentes.
+
+### Série temporelle
+
+Votre mission, si vous l'acceptez, est de calculer le Dynamic Habitat Index (DHI) à partir d'une série temporelle Sentinel-2 sur la forêt de Bouconne.
+
+Mais qu'est-ce que le DHI ? Il s'agit d'un indice temporel qui se base sur le NDVI pour estimer la dynamique des habitats. Vous pouvez [jeter un oeil à cette présentation à la fois succinte, informative, et agréable](https://arset.gsfc.nasa.gov/sites/default/files/land/workshops/WCC2016/S3.2%20Dynamic%20Habitat%20Index%20for%20Biodiversity.pdf). Cet indice devrait être aussi l'un des premiers à être [produit à l'échelle nationale par le pôle Théia](https://www.theia-land.fr/ceslist/variables-pour-la-biodiversite/).
+
+Après avoir trouvé la formule du DHI, vous vous lancerez alors dans la quête de l'outil idéal pour le calculer.
+
+### Être actif c'est bien !
+
+Depuis le début du cours, nous n'avons utilisé que des capteurs optiques passifs. Pour changer la donne, nous allons prendre en main des données RADAR provenant de Sentinel-1. Gràce à Yousra Hamrouni @YousraH nous avons désormais des données radar lissées (filtre spatio-temporel) avec une moyenne par saison.
+
+Après vous être familiarisé avec la donnée radar, répondez à ces questions : 
+
+- Qu'apporte la donnée rapport par rapport aux données optiques ?
+- Quel(s) problèmes avez-vous rencontré avec les données optiques et radar ?
+- Estimez l'apport des données radar pour cartographier les feuillus des résineux
+- Créer une composition colorée avec les données radar
+
 ## Cours 6
 
 Partiel
