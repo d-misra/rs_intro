@@ -90,11 +90,12 @@ Pour vous inscrire et essayer GEE, ça se passe sur [https://code.earthengine.go
 - **OTB** pour des traitements plus complexes ou plus facilement reproductions (en mode cli, c'est-à-dire en ligne de commande, ou gui, c'est-à-dire à travers une interface graphique).
 
 #### Pré-requis
-Comme OTB dorénavant un plugin QGIS depuis la version 3, veuillez [suivre la page dédiée à son installation](https://gitlab.orfeo-toolbox.org/orfeotoolbox/qgis-otb-plugin). Si vous utilisez votre propre ordinateur, vous devrez tout d'abord installer OrfeoToolBox avant son plugin.
+Tout d'abord il faut installer **OTB** si vous n'utilisez pas un ordinateur de l'ENSAT : https://www.orfeo-toolbox.org/download/. Dézippé le dans C:\{otb}
+Puis, pour faire le lien entre la librairie OTB et QGIS, le CNES a développé un plugin à cet usage, veuillez [suivre la page dédiée à son installation](https://gitlab.orfeo-toolbox.org/orfeotoolbox/qgis-otb-plugin). Si vous utilisez votre propre ordinateur, vous devrez tout d'abord installer OrfeoToolBox avant son plugin.
 
 Après avoir installé le plugin OTB, cliquez sur la clé Options dans la boite à outils de traitements, puis dans `Fournisseurs de traitements> OTB` mettez ces informations si vous êtes sous Windows : 
- - OTB application folder :  `C:\OTB-6.6.1-Win64\lib\otb\applications`
- - OTB folder : `C:\OTB-6.6.1-Win64`
+ - OTB application folder :  `C:\OTB-6.6.1-Win64\lib\otb\applications` (remplacer la version par celle que vous avez téléchargé)
+ - OTB folder : `C:\OTB-6.6.1-Win64` (remplacer la version par celle que vous avez téléchargé)
 
 Si vous êtes sous Linux : 
  - OTB application folder :  `\usr\local\OTB-6.6.1-Win64\lib\otb\applications`
