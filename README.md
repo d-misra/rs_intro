@@ -380,6 +380,8 @@ Après avoir trouvé la formule du DHI, vous vous lancerez alors dans la quête 
 
 ### Être actif c'est bien !
 
+**Cette partie est annulée pour les étudiant⋅es en télétravail suite au COVID-19** 
+
 Depuis le début du cours, nous n'avons utilisé que des capteurs optiques passifs. Pour changer la donne, nous allons prendre en main des données RADAR provenant de Sentinel-1. Gràce à Yousra Hamrouni @YousraH nous avons désormais des données radar lissées (filtre spatio-temporel) avec une moyenne par saison.
 
 La donnée est à télécharger ici : https://karasiak.net/data/students/bouconne_s1.zip.
