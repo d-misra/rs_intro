@@ -230,9 +230,15 @@ Retrouver pour chaque indice spectral la bande Sentinel-2 correspondante puis g�
 
 À partir d'un indice de votre choix, créer un seuil permettant de différencier différentes classes d'occupation de sol (eau/forêt/route/nuage).
 
-Par exemple, à partir du NDVI, créez une nouvelle image avec plusieurs classes (1 = Forêt, 2 = non-forêt, 3 = Eau) par exemple.
+Par exemple, à partir du NDVI, créez une nouvelle image avec plusieurs classes (1 = Forêt, 2 = non-forêt, 3 = Eau) par exemple. La formule pourra être quelque chose du type : Si NDVI > 0.2 alors je met comme valeur de pixel 1, si NDVI < 0, je met la valeur 3, sinon met la valeur 2.
 
 Vous pouvez utiliser comme précédemment, soit `BandMath`, soit la `calculatrice raster`.
+
+Pour `BandMath` les conditions se posent de la façon suivante : 
+- Si le pixel la bande 1 de l'image 1 est supérieure 0.5  alors on a l'équation suivante : 
+- `im1b1 > 0.5 ? vraie : faux` ce qui donne :
+- `im1b1 > 0.5 ? 1 : 2`. On peut également compliquer la condition  :
+- `im1b1 > 0.5 ? 1 : im1b1 < 0 ? vrai : faux`.
 
 Nommez votre fichier `OCS.tif` et choisissez bien votre format (entier/flottant...).
 
