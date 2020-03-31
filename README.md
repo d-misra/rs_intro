@@ -156,7 +156,7 @@ Afin de bien vous familiariser avec les outils, je vous conseille d'apprendre à
 - du raster virtuel généré précédemment.
 
 #### À partir d'otb BandMath CLI (mode geek)
-
+** Uniquement si vous êtes sous linux et que vous vous en sentez capable ! **
 Dans le terminal de commandes (Ctrl+Alt+T sous ubuntu) ou cherchez terminal dans le barre de recherche, puis tapez :
 `otbcli_BandMath -help`
 
